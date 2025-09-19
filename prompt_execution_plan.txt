@@ -1,0 +1,46 @@
+Available tools:
+{tools_info}
+
+User query: "{query}"
+
+IMPORTANT RULES:
+1. If the query needs data from a database, you MUST use BOTH tools in sequence:
+   - First: Text To Sql (to generate the SQL)
+   - Then: Execute Sql (to execute the SQL and get results)
+2. Text To Sql ONLY generates SQL queries - it does NOT return data
+3. Execute Sql is required to get actual results
+4. Use "sequential" action when you need both SQL generation AND execution
+5. If the user query needs to get lineage status given a workflow name use /lineage/status/{{workflow_name}}
+
+Create an execution plan to answer this query. You can:
+1. Use NO tools if the query doesn't require API calls
+2. Use ONE tool if it's a simple request that doesn't need database data
+3. Use MULTIPLE tools in sequence if you need to generate AND execute SQL
+4. Use tools in parallel if they're independent
+
+For database queries, ALWAYS use this pattern:
+{{
+    "action": "sequential",
+    "steps": [
+        {{
+            "step": 1,
+            "tool": "Text To Sql",
+            "parameters": {{"request_body": {{"user_query": "the query"}}}},
+            "depends_on": []
+        }},
+        {{
+            "step": 2,
+            "tool": "Execute Sql",
+            "parameters": {{"request_body": {{"sql_query": "SQL from step 1"}}}},
+            "depends_on": [1]
+        }}
+    ]
+}}
+
+Respond in JSON format:
+{{
+    "action": "none|single|sequential|parallel",
+    "reasoning": "why this approach",
+    "original_query": "{query}",
+    "steps": [...]
+}}
