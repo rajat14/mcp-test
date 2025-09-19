@@ -1,0 +1,3 @@
+langgraph.errors.InvalidUpdateError: Expected dict, got <coroutine object planner_node at 0x0000026E396D4890>
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_GRAPH_NODE_RETURN_VALUE     
+During task with name 'planner' and id 'a4635100-021d-c87d-6c8e-1c63bd4937b4'
