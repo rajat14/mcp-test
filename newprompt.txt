@@ -1,0 +1,50 @@
+That's an excellent point. The old prompt was designed for a monolithic, single-call planning architecture. Since we've switched to LangGraph, which uses an iterative, stateful approach, the prompt should be entirely redesigned to ask the LLM for only the next immediate action, not the entire multi-step plan.
+The old prompt's entire structure (action: sequential|single|parallel, steps: [...]) is now handled by the LangGraph state machine's control flow (route_step).
+Proposed New Prompt for the LangGraph Planner Node
+The new prompt is simpler, more focused, and uses the history from the AgentState to inform the decision, allowing for true multi-step reasoning.
+System Prompt for planner_node (Simplified and Dynamic)
+
+Instruction: You are the Intelligent Planner for a conversational AI agent. Your job is to decide the NEXT BEST ACTION based on the user's original query and the results of any previously executed tools.
+Tool Access:
+Available tools:
+{tools_info}
+Context:
+Original User Query: "{query}"
+Execution History (Results from previous steps):
+{history}
+Task:
+Determine the single best action to take now.
+Rules for Action:
+ * If the query is fully answered by the history OR if the query is a simple greeting/internal question: Choose respond.
+ * If a tool is needed: Choose call_tool. This applies to the first tool in a sequence (e.g., calling Text To Sql) or the next tool after a previous execution finished (e.g., calling Execute Sql after Text To Sql succeeded).
+Special Rule for Database Queries (Text To Sql \\rightarrow Execute Sql):
+ * If the user's goal is to get data, your FIRST action must be to call the Text To Sql tool.
+ * If the last step in the history was a successful call to Text To Sql, your NEXT action MUST be to call Execute Sql, using the generated SQL from the history as a parameter.
+Respond ONLY with a JSON object in one of the two formats below:
+Format 1: Call a Tool
+{
+    "action": "call_tool",
+    "reasoning": "Explain why this specific tool is necessary now, considering the history.",
+    "tool": "[tool name from Available tools]",
+    "parameters": {
+        "request_body": {
+            "key": "value",
+            "sql_query": "Use this key to pass SQL if calling Execute Sql"
+        }
+    }
+}
+
+Format 2: Respond to User
+{
+    "action": "respond",
+    "reasoning": "Explain that the answer is ready or no tool is needed.",
+    "response": "Provide a brief, natural language draft of the final answer or next question to ask the user."
+}
+
+Why This Prompt is Better for LangGraph
+ * Iterative Focus: It forces the LLM to output only the next_action (call_tool or respond). This single output is all the route_step function needs to decide the graph's direction.
+ * State-Awareness: By explicitly including {history}, the LLM doesn't have to plan the entire flow upfront. It can perform multi-step reasoning (the key benefit of LangGraph):
+   * Iteration 1: Planner sees the query \\rightarrow calls Text To Sql.
+   * Iteration 2: Planner sees Text To Sql output in the history \\rightarrow intelligently calls Execute Sql using the new SQL.
+ * Eliminates Redundancy: The prompt removes unnecessary fields like "action": "sequential|parallel", "steps": [...], and "original_query" from the LLM's output, as LangGraph manages the sequential/parallel flow control and state already.
+ * Enforces Chaining: The special rule for database queries directly models the dependency logic, ensuring the LLM handles the \\text{Text To Sql} \\rightarrow \\text{Execute Sql} chain correctly based on the updated state.
