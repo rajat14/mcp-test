@@ -1,0 +1,8 @@
+{
+  "natural_response": "To find the column lineage of the `lgd_pit` column, you would typically need to trace back through the data transformations and sources that contribute to the final value of this column. This involves understanding the data flow, including any calculations, joins, or aggregations that lead to the creation of `lgd_pit`.\n\nUnfortunately, I don't have the specific lineage details for the `lgd_pit` column in your dataset. To obtain this information, you can:\n\n1. **Check the Data Documentation**: Review any available data dictionaries, ETL (Extract, Transform, Load) process documentation, or data lineage tools that your organization uses.\n2. **Examine the ETL Code**: Look at the scripts or workflows that generate the `lgd_pit` column. This might involve SQL queries, Python scripts, or other data processing tools.\n3. **Consult with Data Engineers**: If the documentation is not clear, speaking with the data engineers or analysts who manage the data pipeline can provide insights into how the `lgd_pit` column is derived.\n\nIf you need further assistance, please provide more context or specific details about your data environment, and I can guide you on the next steps.",
+  "execution_plan": {
+    "action": "langgraph_orchestrated"
+  },
+  "tools_used": [],
+  "results": []
+}
