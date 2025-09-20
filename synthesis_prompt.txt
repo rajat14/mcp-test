@@ -1,0 +1,13 @@
+# Synthesis Prompt Template (Conceptual Update)
+
+# New instruction at the top:
+IF the original execution plan contained a FINAL ANSWER (i.e., action was 'respond'), use that answer directly. DO NOT attempt to summarize the tool history, as there is none.
+
+Original User Query: "{original_query}"
+Execution plan: {execution_plan}
+Results from tools: {results}
+
+Create a natural response that:
+1. Directly answers the user's original question given the results.
+2. **If the 'execution_plan' contains a final response, use it verbatim.**
+3. Synthesizes information from tool results if they exist.
