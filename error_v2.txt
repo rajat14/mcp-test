@@ -1,0 +1,14 @@
+File "C:\Users\Rajat218105\bu-cv-codeharbor-lineage-app\backend\src\core\langgraph\mcp_graph.py", line 19, in run_planner
+    return await planner_node(state, tool_executor_instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Rajat218105\bu-cv-codeharbor-lineage-app\backend\src\core\langgraph\nodes.py", line 24, in planner_node
+    prompt = tool_executor.prompt_library.retrieve_prompt_via_defaults(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Rajat218105\bu-cv-codeharbor-lineage-app\backend\src\infra\prompt_libraries\libraries\local_fs_prompt_library.py", line 86, in retrieve_prompt_via_defaults
+    prompt = self.retrieve_prompt(prompt_key, placeholder_names_and_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Rajat218105\bu-cv-codeharbor-lineage-app\backend\src\infra\prompt_libraries\libraries\local_fs_prompt_library.py", line 76, in retrieve_prompt
+    prompt = prompt.format(**placeholder_names_and_values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: '\n    "action"'
+During task with name 'planner' and id '7535ec97-7f9f-7b31-8c6c-b17618999b42'
