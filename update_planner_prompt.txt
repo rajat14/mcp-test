@@ -1,0 +1,7 @@
+# Planner Prompt Template (Conceptual Update)
+
+# --- ADD THIS RULE ---
+MANDATORY PARAMETER RULE:
+1. Before calling a data-dependent tool (like Insight or Get Lineage), you MUST have all **REQUIRED** parameters (namespace, table_name, column_name).
+2. If any of these are missing from the query, your **FIRST ACTION** must be to call **'Smart Data Retrieval'** to find the missing context, even if the user only provided a column name.
+3. If you call a tool, its JSON must be PERFECT. **DO NOT include comments (//) or placeholders in the final JSON output.**
