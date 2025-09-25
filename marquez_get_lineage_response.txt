@@ -1,0 +1,409 @@
+"lineage": {
+            "nodes": [
+              {
+                "id": "dataset:::multi_entity_capital_enriched:::capital_rrds_fact",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "multi_entity_capital_enriched",
+                    "name": "capital_rrds_fact"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "capital_rrds_fact",
+                  "physicalName": "capital_rrds_fact",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2024-06-19T08:41:15.088Z",
+                  "namespace": "multi_entity_capital_enriched",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "c08c005",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "break down pds in  the respective pd bands"
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "Table  contains data on generic provisions, RWA metrics for Bank of Spain and UK, PD band breakdowns, and EAD excluding residual values.",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::pcout:::bdr_c08",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "pcout",
+                    "name": "bdr_c08"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "bdr_c08",
+                  "physicalName": "bdr_c08",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.955890Z",
+                  "namespace": "pcout",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "band",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "bands for the pd"
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "Table  contains banking data including band, reg_pd, rwa_uk, off_balance (off-balance amount for the contract-category), and ead_on.",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::pcout:::bdr_fsa045",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "pcout",
+                    "name": "bdr_fsa045"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "bdr_fsa045",
+                  "physicalName": "bdr_fsa045",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.997171Z",
+                  "namespace": "pcout",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "band",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "bands for the pd"
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "Table  contains banking data including columns for expected loss in the UK (el_uk), count of on-balance sheet items (count_on), risk-weighted assets in the UK (rwa_uk), new expected loss in Spain (el_es_new), and on-balance sheet exposure at default (ead_on).",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::work:::bdr_c08",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "work",
+                    "name": "bdr_c08"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "bdr_c08",
+                  "physicalName": "bdr_c08",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.999272Z",
+                  "namespace": "work",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "band",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "bands for the pd"
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "Table  contains aggregated banking data, including columns like val_adj, lgd_bde, el_es, reg_pd, and count, which represents the number of rows aggregated.",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::work:::on_off",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "work",
+                    "name": "on_off"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "on_off",
+                  "physicalName": "on_off",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.958023Z",
+                  "namespace": "work",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "c08c005",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "No description available."
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "The  table tracks on-balance and off-balance sheet exposures, including expected losses (el_on, el_off), risk-weighted assets (rwa_off), and loss given default (lgd_on_bal, lgd_off_bal).",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::work:::on_off_ants",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "work",
+                    "name": "on_off_ants"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "on_off_ants",
+                  "physicalName": "on_off_ants",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.962251Z",
+                  "namespace": "work",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "c08c005",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "No description available."
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "The table  tracks on-balance and off-balance sheet items, including columns for el_off, rwa_on, lgd_on_bal, lgd_off_bal, and rwa_off, to assess risk-weighted assets and loss given default.",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "dataset:::work:::on_off_sanuk",
+                "type": "DATASET",
+                "data": {
+                  "id": {
+                    "namespace": "work",
+                    "name": "on_off_sanuk"
+                  },
+                  "type": "DB_TABLE",
+                  "name": "on_off_sanuk",
+                  "physicalName": "on_off_sanuk",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2025-09-15T21:37:39.953624Z",
+                  "namespace": "work",
+                  "sourceName": "default",
+                  "fields": [
+                    {
+                      "name": "c08c005",
+                      "type": "Dynamic Later",
+                      "tags": [],
+                      "description": "No description available."
+                    }
+                  ],
+                  "tags": [],
+                  "lastModifiedAt": null,
+                  "description": "The table  contains financial metrics such as LGD (Loss Given Default) balances, RWA (Risk-Weighted Assets), and EL (Expected Loss) for both on-balance and off-balance sheet items.",
+                  "lastLifecycleState": ""
+                },
+                "inEdges": [],
+                "outEdges": []
+              },
+              {
+                "id": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "type": "JOB",
+                "data": {
+                  "id": {
+                    "namespace": "original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                    "name": "original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1"
+                  },
+                  "type": "BATCH",
+                  "name": "original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                  "simpleName": "original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                  "parentJobName": null,
+                  "parentJobUuid": null,
+                  "currentRunUuid": "fc0d7bc6-d9a1-483b-b286-8baaefc2773e",
+                  "createdAt": "2024-06-19T08:41:15.088Z",
+                  "updatedAt": "2024-06-19T08:41:15.088Z",
+                  "namespace": "original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                  "inputs": [],
+                  "outputs": [],
+                  "location": null,
+                  "description": null,
+                  "latestRun": null
+                },
+                "inEdges": [],
+                "outEdges": []
+              }
+            ],
+            "edges": [
+              {
+                "origin": "dataset:::multi_entity_capital_enriched:::capital_rrds_fact",
+                "destination": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005",
+                "destination": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "data": {
+                  "previous": [],
+                  "next": [
+                    "datasetField:::work:::on_off_ants:::c08c005",
+                    "datasetField:::work:::on_off_sanuk:::c08c005",
+                    "datasetField:::pcout:::bdr_fsa045:::band",
+                    "datasetField:::work:::bdr_c08:::band",
+                    "datasetField:::pcout:::bdr_c08:::band",
+                    "datasetField:::work:::on_off:::c08c005"
+                  ],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::pcout:::bdr_c08",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::pcout:::bdr_fsa045",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::work:::bdr_c08",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::work:::on_off",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::work:::on_off_ants",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "dataset:::work:::on_off_sanuk",
+                "data": {
+                  "previous": [],
+                  "next": [],
+                  "transformationDescription": null,
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::pcout:::bdr_c08:::band",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::pcout:::bdr_fsa045:::band",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::work:::bdr_c08:::band",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::work:::on_off:::c08c005",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::work:::on_off_ants:::c08c005",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              },
+              {
+                "origin": "job:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1:::original_log1.SASMain_WorkspaceServer_2024-06-19_-_Copy_1",
+                "destination": "datasetField:::work:::on_off_sanuk:::c08c005",
+                "data": {
+                  "previous": [
+                    "datasetField:::multi_entity_capital_enriched:::capital_rrds_fact:::c08c005"
+                  ],
+                  "next": [],
+                  "transformationDescription": "",
+                  "transformationType": null
+                }
+              }
+            ]
+          }
+        }
