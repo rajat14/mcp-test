@@ -1,9 +1,9 @@
-def filter_lineage_json(lineage_data, query_column=None, query_namespace=None, query_table=None, direction="downstream"):
+def filter_lineage_json(lineage_file_path, query_column=None, query_namespace=None, query_table=None, direction="downstream"):
     """
     Filter lineage JSON to extract only relevant information for a specific column lineage query.
     
     Args:
-        lineage_data (dict): The full lineage JSON response
+        lineage_file_path (str): Path to the JSON file containing lineage data
         query_column (str): Name of the column to trace (e.g., 'c08c005')
         query_namespace (str): Namespace of the source table (e.g., 'multi_entity_capital_enriched')
         query_table (str): Name of the source table (e.g., 'capital_rrds_fact')
@@ -12,6 +12,16 @@ def filter_lineage_json(lineage_data, query_column=None, query_namespace=None, q
     Returns:
         dict: Filtered lineage data containing only relevant nodes and edges
     """
+    import json
+    
+    # Load lineage data from file
+    try:
+        with open(lineage_file_path, 'r') as file:
+            lineage_data = json.load(file)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Lineage file not found: {lineage_file_path}")
+    except json.JSONDecodeError:
+        raise ValueError(f"Invalid JSON format in file: {lineage_file_path}")
     
     if not lineage_data or 'lineage' not in lineage_data:
         return lineage_data
@@ -187,12 +197,12 @@ def extract_query_params(user_query):
 
 
 # Example usage function
-def process_lineage_query(lineage_json, user_query):
+def process_lineage_query(lineage_file_path, user_query):
     """
     Main function to process a lineage query and return filtered results.
     
     Args:
-        lineage_json (dict): Full lineage response from API
+        lineage_file_path (str): Path to the JSON file containing lineage data
         user_query (str): User's natural language query
     
     Returns:
@@ -204,12 +214,17 @@ def process_lineage_query(lineage_json, user_query):
     
     # Filter the lineage data
     filtered_data = filter_lineage_json(
-        lineage_json, 
+        lineage_file_path, 
         query_column=column,
         query_namespace=namespace, 
         query_table=table,
         direction=direction
     )
+    
+    # Load original data to get count for metadata
+    import json
+    with open(lineage_file_path, 'r') as file:
+        original_data = json.load(file)
     
     # Add metadata about the filtering
     filtered_data['query_info'] = {
@@ -220,8 +235,8 @@ def process_lineage_query(lineage_json, user_query):
             'table': table,
             'direction': direction
         },
-        'nodes_filtered': len(lineage_json.get('lineage', {}).get('nodes', [])),
-        'edges_filtered': len(lineage_json.get('lineage', {}).get('edges', [])),
+        'nodes_filtered': len(original_data.get('lineage', {}).get('nodes', [])),
+        'edges_filtered': len(original_data.get('lineage', {}).get('edges', [])),
         'nodes_remaining': len(filtered_data.get('lineage', {}).get('nodes', [])),
         'edges_remaining': len(filtered_data.get('lineage', {}).get('edges', []))
     }
