@@ -1,0 +1,12 @@
+"call_parameters": {
+        "query_params": {
+          "namespace": "multi_entity_capital_enriched",
+          "table_name": "capital_rrds_fact",
+          "column_name": "c08c005",
+          "lineage_type": "column",
+          "direction": "downstream",
+          "depth": 2
+        },
+        "request_body": {}
+      },
+      "error": "Preprocessing failed: expected str, bytes or os.PathLike object, not dict"
