@@ -1,0 +1,52 @@
+{
+  "query": {
+    "namespace": "multi_entity_capital_enriched",
+    "table": "capital_rrds_fact",
+    "column": "c08c005",
+    "description": "break down pds in  the respective pd bands"
+  },
+  "lineage": {
+    "namespace": "multi_entity_capital_enriched",
+    "table": "capital_rrds_fact",
+    "column": "c08c005",
+    "description": "break down pds in  the respective pd bands",
+    "downstream": [
+      {
+        "namespace": "work",
+        "table": "on_off",
+        "column": "c08c005",
+        "description": "No description available.",
+        "transformation": "temp_table: work.on_off_split"
+      },
+      {
+        "namespace": "work",
+        "table": "on_off_ants",
+        "column": "c08c005",
+        "description": "No description available.",
+        "transformation": "temp_table: work.on_off_split_ants"
+      },
+      {
+        "namespace": "work",
+        "table": "on_off_sanuk",
+        "column": "c08c005",
+        "description": "No description available.",
+        "transformation": "temp_table: work.on_off_split_sanuk"
+      }
+    ]
+  },
+  "summary": {
+    "final_impacts": [
+      "work.on_off.c08c005",
+      "work.on_off_ants.c08c005",
+      "work.on_off_sanuk.c08c005"
+    ],
+    "hops": 1,
+    "intermediate_nodes": [
+      "multi_entity_capital_enriched.capital_rrds_fact.c08c005"
+    ],
+    "transformation_types": [
+      "temp_table"
+    ],
+    "governance_gaps": []
+  }
+}
